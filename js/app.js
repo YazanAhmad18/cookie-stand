@@ -4,7 +4,7 @@
 
 
 const seattle = {
-  name:'Seattle',
+  name : 'seattle',
   minCustomer: 23,
   maxCustomer: 65,
   avgCookie: 6.3,
@@ -46,7 +46,7 @@ const seattle = {
     for(let i=0;i<14;i++){
       let item=document.createElement('li');
       list1.appendChild(item);
-      item.textContent=`${this.hours[i]}:${this.avgcookie[i]}`;
+      item.textContent=`${this.hours[i]}:${this.avgcookie[i]} cookies`;
 
 
     }
@@ -73,9 +73,9 @@ console.log(seattle.list());
 
 const Tokyo = {
   name:'Tokyo',
-  minCustomer: 23,
-  maxCustomer: 65,
-  avgCookie: 6.3,
+  minCustomer: 3,
+  maxCustomer: 24,
+  avgCookie: 1.2,
   customernum: [],
   avgcookie:[],
   total:0,
@@ -113,7 +113,7 @@ const Tokyo = {
     for(let i=0;i<14;i++){
       let item=document.createElement('li');
       list1.appendChild(item);
-      item.textContent=`${this.hours[i]}:${this.avgcookie[i]}`;
+      item.textContent=`${this.hours[i]}:${this.avgcookie[i]} cookies`;
 
 
     }
@@ -138,9 +138,9 @@ console.log(Tokyo.list());
 
 const Dubai = {
   name:'Dubai',
-  minCustomer: 23,
-  maxCustomer: 65,
-  avgCookie: 6.3,
+  minCustomer: 11,
+  maxCustomer: 38,
+  avgCookie: 3.7,
   customernum: [],
   avgcookie:[],
   total:0,
@@ -178,7 +178,7 @@ const Dubai = {
     for(let i=0;i<14;i++){
       let item=document.createElement('li');
       list1.appendChild(item);
-      item.textContent=`${this.hours[i]}:${this.avgcookie[i]}`;
+      item.textContent=`${this.hours[i]}:${this.avgcookie[i]} cookies`;
 
 
     }
@@ -206,9 +206,9 @@ console.log(Dubai.list());
 
 const Paris	 = {
   name:'Paris	',
-  minCustomer: 23,
-  maxCustomer: 65,
-  avgCookie: 6.3,
+  minCustomer: 20,
+  maxCustomer: 38,
+  avgCookie: 2.3,
   customernum: [],
   avgcookie:[],
   total:0,
@@ -246,7 +246,7 @@ const Paris	 = {
     for(let i=0;i<14;i++){
       let item=document.createElement('li');
       list1.appendChild(item);
-      item.textContent=`${this.hours[i]}:${this.avgcookie[i]}`;
+      item.textContent=`${this.hours[i]}:${this.avgcookie[i]} cookies`;
 
 
     }
@@ -271,9 +271,9 @@ console.log(Paris	.list());
 
 const Lima	 = {
   name:'Lima	',
-  minCustomer: 23,
-  maxCustomer: 65,
-  avgCookie: 6.3,
+  minCustomer: 2,
+  maxCustomer: 16,
+  avgCookie: 4.6,
   customernum: [],
   avgcookie:[],
   total:0,
@@ -311,7 +311,7 @@ const Lima	 = {
     for(let i=0;i<14;i++){
       let item=document.createElement('li');
       list1.appendChild(item);
-      item.textContent=`${this.hours[i]}: ${this.avgcookie[i]}`;
+      item.textContent=`${this.hours[i]}: ${this.avgcookie[i]} cookies`;
 
 
     }
