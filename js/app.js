@@ -4,7 +4,7 @@
 
 
 const seattle = {
-  name:'Seattle',
+  name:'seattle',
   minCustomer: 23,
   maxCustomer: 65,
   avgCookie: 6.3,
