@@ -4,14 +4,15 @@
 
 
 let hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
-let sale=document.getElementById('sales');
-let table1=document.createElement('table');
+let sale = document.getElementById('sales');
+let table1 = document.createElement('table');
+table1.setAttribute('id', 'table3');
 sale.appendChild(table1);
-table1.setAttribute('border','1');
-table1.setAttribute('cellpadding','7');
-table1.setAttribute('align','center');
+table1.setAttribute('border', '1');
+table1.setAttribute('cellpadding', '7');
+table1.setAttribute('align', 'center');
 
-let arrayobejcts=[];
+let arrayobejcts = [];
 
 
 
@@ -41,69 +42,108 @@ Cookies.prototype.getnumber = function () {
 
     this.customernum.push(Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer));
 
-  }};
+  }
+};
 
 
-Cookies.prototype.getcookie=function(){
-  for(let j=0;j<14;j++){
+Cookies.prototype.getcookie = function () {
+  for (let j = 0; j < 14; j++) {
     this.avgcookie.push(Math.floor(this.customernum[j] * this.avgCookie));
-    this.total+=this.avgcookie[j];
+    this.total += this.avgcookie[j];
 
-  }};
+  }
+};
 
 
 
-for(let i = 0 ; i<arrayobejcts.length; i++){
+for (let i = 0; i < arrayobejcts.length; i++) {
   arrayobejcts[i].getnumber();
   arrayobejcts[i].getcookie();
 }
 
 
+const locationInfo = document.getElementById('information');
 
-function headtable(){
-  let tablehead=document.createElement('thead');
+locationInfo.addEventListener('submit', interdata);
+
+
+function interdata(event) {
+  event.preventDefault();
+  let nameField = event.target.nameField.value;
+  let maxCustomer = event.target.maxCustomer.value;
+  let minCustomer = event.target.minCustomer.value;
+  let avgcustomers = event.target.avgcustomers.value;
+
+  let newlocation = new Cookies(nameField, minCustomer, maxCustomer, avgcustomers);
+
+  newlocation.getnumber();
+  newlocation.getcookie();
+
+
+
+  for (let i = 0; i < arrayobejcts.length + 1; i++) {
+    document.getElementById('table3').deleteRow(-1);
+
+  }
+
+  // headtable();
+  tablebody();
+  tablefooter();
+
+
+}
+
+
+
+
+
+
+
+
+
+function headtable() {
+  let tablehead = document.createElement('thead');
   table1.appendChild(tablehead);
-  let trow=document.createElement('tr');
+  let trow = document.createElement('tr');
   tablehead.appendChild(trow);
 
-  let beginning=document.createElement('th');
+  let beginning = document.createElement('th');
   tablehead.appendChild(beginning);
-  beginning.textContent='location';
+  beginning.textContent = 'location';
 
-  for(let i=0;i<14;i++){
-    let data=document.createElement('th');
+  for (let i = 0; i < 14; i++) {
+    let data = document.createElement('th');
     tablehead.appendChild(data);
-    data.textContent=`${hours[i]}`;
+    data.textContent = `${hours[i]}`;
   }
-  let finish =document.createElement('th');
+  let finish = document.createElement('th');
   tablehead.appendChild(finish);
-  finish.textContent= 'daily location total';
+  finish.textContent = 'daily location total';
 
 }
 headtable();
 
-function tablebody(){
-  let tabbody=document.createElement('tbody');
+function tablebody() {
+  let tabbody = document.createElement('tbody');
   table1.appendChild(tabbody);
-  for(let i=0;i<arrayobejcts.length;i++){
-    let rowbody=document.createElement('tr');
+  for (let i = 0; i < arrayobejcts.length; i++) {
+    let rowbody = document.createElement('tr');
     tabbody.appendChild(rowbody);
-    let data1=document.createElement('td');
+    let data1 = document.createElement('td');
     rowbody.appendChild(data1);
-    data1.textContent= arrayobejcts[i].location;
+    data1.textContent = arrayobejcts[i].location;
 
-    for(let j=0;j<hours.length;j++){
-      let data2=document.createElement('td');
+    for (let j = 0; j < hours.length; j++) {
+      let data2 = document.createElement('td');
       rowbody.appendChild(data2);
-      data2.textContent=arrayobejcts[i].avgcookie[j];
+      data2.textContent = arrayobejcts[i].avgcookie[j];
 
     }
-    let last=document.createElement('td');
+    let last = document.createElement('td');
     rowbody.appendChild(last);
-    last.textContent=arrayobejcts[i].total;
+    last.textContent = arrayobejcts[i].total;
+
   }
-
-
 
 
 
@@ -114,41 +154,43 @@ function tablebody(){
 tablebody();
 
 
-function tablefooter(){
+function tablefooter() {
 
-  let lasttable=document.createElement('tfoot');
+  let lasttable = document.createElement('tfoot');
   table1.appendChild(lasttable);
-  let lastrow=document.createElement('tr');
+  let lastrow = document.createElement('tr');
   lasttable.appendChild(lastrow);
-  let beg=document.createElement('td');
+  let beg = document.createElement('td');
   lastrow.appendChild(beg);
-  beg.textContent='total';
-  let allsum=0;
-  for(let i=0;i<hours.length;i++){
-    let sum=0;
+  beg.textContent = 'total';
+  let allsum = 0;
+  for (let i = 0; i < hours.length; i++) {
+    let sum = 0;
 
 
-    for(let j=0;j<arrayobejcts.length;j++){
-      sum+=arrayobejcts[j].avgcookie[i];
+    for (let j = 0; j < arrayobejcts.length; j++) {
+      sum += arrayobejcts[j].avgcookie[i];
 
     }
-    let data4=document.createElement('td');
+    let data4 = document.createElement('td');
     lastrow.appendChild(data4);
-    data4.textContent=sum;
+    data4.textContent = sum;
 
-    allsum+=sum;
+    allsum += sum;
 
 
   }
-  let data5=document.createElement('td');
+  let data5 = document.createElement('td');
   lastrow.appendChild(data5);
-  data5.textContent=allsum;
+  data5.textContent = allsum;
 
 
 }
 
 
 tablefooter();
+
+
 
 
 
